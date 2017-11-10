@@ -40,8 +40,9 @@ $(document).ready(function() {
   });
 
   $('.select2ajax').select2({
+    theme: "bootstrap",
     ajax: {
-      url: '/users',
+      url: '/users/search',
       dataType: 'json'
       // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
     }
