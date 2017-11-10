@@ -1,0 +1,16 @@
+<%= simple_form_for @vehicle, :html => { :class => 'form-vertical' } do |f| %>
+  <%= f.association :user, input_html: {class: 'select2ajax'} %>
+  <%#= selectize_ajax_tag f.object, :user_id, collection_path: User.collection -%>
+  <%#= f.select(
+    :user, 
+    User.all.map{|u| [u.name.to_s, u.id]}, 
+    {}, 
+    { id: 'user-select' } 
+   ) %>  
+
+  <%= f.input :description %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                vehicles_path, :class => 'btn btn-default' %>
+<% end %>

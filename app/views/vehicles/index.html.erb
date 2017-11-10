@@ -1,0 +1,40 @@
+<%- model_class = Vehicle -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @vehicles.each do |vehicle| %>
+      <tr>
+        <td><%= link_to vehicle.id, vehicle_path(vehicle) %></td>
+        <td><%= vehicle.user_id %></td>
+        <td><%= vehicle.description %></td>
+        <td><%=l vehicle.created_at %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      vehicle_path(vehicle), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_vehicle_path(vehicle), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      vehicle_path(vehicle),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_vehicle_path,
+            :class => 'btn btn-primary' %>
