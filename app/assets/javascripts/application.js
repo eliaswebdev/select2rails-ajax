@@ -40,10 +40,13 @@ $(document).ready(function() {
   });
 
   $('.select2ajax').select2({
-    theme: "bootstrap",
+    minimumInputLength: 1,
+    maximumInputLength: 20,      
+    theme: "bootstrap",    
     ajax: {
-      url: '/users/search',
-      dataType: 'json'
+      url: '/users/search.json',
+      dataType: 'json',
+      delay: 250
       // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
     }
   });  

@@ -1,5 +1,6 @@
 <%= simple_form_for @vehicle, :html => { :class => 'form-vertical' } do |f| %>
   <%= f.association :user, input_html: {class: 'select2ajax'} %>
+  
   <%#= selectize_ajax_tag f.object, :user_id, collection_path: User.collection -%>
   <%#= f.select(
     :user, 
@@ -7,6 +8,8 @@
     {}, 
     { id: 'user-select' } 
    ) %>  
+
+  <%#= f.association :user, input_html: { 'data-endpoint': search_users_path+'.json', class: 'select2-field' } %>
 
   <%= f.input :description %>
 

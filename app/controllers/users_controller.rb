@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.all.where('name LIKE ?', "%#{params[:q]}%")
+    @users = User.all
+                 .where('name LIKE ?', "%#{params[:term]}%")
 
     respond_to do |format|
       format.json { render json: @users.map { |p| { id: p.id, name: p.name } } }
