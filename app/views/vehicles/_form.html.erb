@@ -16,7 +16,7 @@
     <%= f.association :user, collection: User.none, input_html: {class: 'select2ajax'} %>
   <% else -%>
     <select class="form-control select2ajax" name="vehicle[user_id]">
-      <option selected="selected" value="<%= f.object.user.id -%>"><%= f.object.user.try(:name) -%></option>
+      <option selected="selected" value="<%= f.object.user.id -%>"><%= "#{f.object.user.try(:name)} - #{f.object.user.try(:email)}" -%></option>
     </select>    
   <% end -%>
 

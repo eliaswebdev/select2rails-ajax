@@ -8,8 +8,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.all
-                 .where('name ILIKE ? OR email ILIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
+    @users = User.where('name ILIKE ? OR email ILIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
 
     respond_to do |format|
       format.json { render json: @users.map { |p| { id: p.id, name: "#{p.name} - #{p.email}" } } }
