@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   
     case adapter
     when 'Mysql2'
-      @users = User.where("MATCH (name, email) AGAINST ('#{params[:q]}' IN BOOLEAN MODE)")
+      @users = User.where("MATCH (name, email) AGAINST ('#{params[:q]}' COLLATE utf8_general_ci IN BOOLEAN MODE)")
       # @users = User.where("MATCH (name, email) AGAINST (lower('#{params[:q].to_s.downcase}'))")
     when 'PostgreSQL' 
       @users = User.where('name ILIKE ? OR email ILIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
