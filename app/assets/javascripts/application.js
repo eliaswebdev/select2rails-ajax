@@ -35,7 +35,7 @@ $(document).ready(function() {
 
 
 $(function() {
-  return $('.select2ajax').select2({
+  return $('.select2AjaxGetUsers').select2({
     theme: 'bootstrap',
     language: "pt-BR",
     minimumInputLength: 3,
