@@ -1,22 +1,12 @@
 <%= simple_form_for @vehicle, :html => { :class => 'form-vertical' } do |f| %>
-  <%#= f.association :user, input_html: {class: 'select2ajax'} %>
-  
-  <%#= selectize_ajax_tag f.object, :user_id, collection_path: User.collection -%>
-  <%#= f.select(
-    :user, 
-    User.all.map{|u| [u.name.to_s, u.id]}, 
-    {}, 
-    { id: 'user-select' } 
-   ) %>  
-
-  <%#= f.association :user, input_html: { 'data-endpoint': search_users_path+'.json', class: 'select2-field' } %>
-  <%#= f.association :user, collection: User.none, input_html: {class: 'select2ajax', value: f.object.user.name} %>
 
   <% if f.object.new_record? -%>
-    <%= f.association :user, collection: User.none, input_html: {class: 'select2ajax'} %>
+    <%= f.association :user, collection: User.none, input_html: {class: 'select2AjaxGetUsers'} %>
   <% else -%>
-    <select class="form-control select2ajax" name="vehicle[user_id]">
-      <option selected="selected" value="<%= f.object.user.id -%>"><%= "#{f.object.user.try(:name)} - #{f.object.user.try(:email)}" -%></option>
+    <select class="form-control select2AjaxGetUsers" name="vehicle[user_id]">
+      <option selected="selected" value="<%= f.object.user.id -%>">
+        <%= "#{f.object.user.try(:name)} - #{f.object.user.try(:email)}" -%>
+      </option>
     </select>    
   <% end -%>
 

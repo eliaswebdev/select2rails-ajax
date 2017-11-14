@@ -10,7 +10,7 @@
 puts "users"
 
 require 'ffaker'  
-100000.times do
+10000.times do
   user = User.create!(
     name: FFaker::NameBR.name, 
     email: FFaker::Internet.email, 

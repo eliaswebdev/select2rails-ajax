@@ -12,7 +12,7 @@ default: &db_postgresql
   # host: 127.0.0.1
   # port: 5432
 
-default: &db__mysql
+default: &db_mysql
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -21,17 +21,17 @@ default: &db__mysql
   host: 127.0.0.1
 
 development:
-  <<: *db_postgresql
+  <<: *db_mysql
   database: selectize_development
   # database: db/development.sqlite3
 
 test:
-  <<: *db_postgresql
+  <<: *db_mysql
   database: selectize_test
   # database: db/test.sqlite3
 
 production:
-  <<: *db_postgresql
+  <<: *db_mysql
   database: selectize_development
   # database: db/production.sqlite3
 

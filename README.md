@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+```sql
+-- ALTER TABLE `users` ADD FULLTEXT(name);
+-- ALTER TABLE `users` ADD FULLTEXT(email);
+SELECT `users`.* FROM `users` WHERE MATCH(name, email) AGAINST('Mariana');
+```

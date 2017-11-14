@@ -8,7 +8,16 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.where('name ILIKE ? OR email ILIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
+    adapter = ActiveRecord::Base.connection.adapter_name
+  
+    case adapter
+    when 'Mysql2'
+      @users = User.where("MATCH (name, email) AGAINST (lower('#{params[:q].to_s.downcase}'))")
+    when 'PostgreSQL' 
+      @users = User.where('name ILIKE ? OR email ILIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
+    else
+      @users = User.where('name LIKE ? OR email LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
+    end
 
     respond_to do |format|
       format.json { render json: @users.map { |p| { id: p.id, name: "#{p.name} - #{p.email}" } } }
