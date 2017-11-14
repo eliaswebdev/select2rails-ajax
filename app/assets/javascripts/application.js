@@ -17,13 +17,6 @@
 //= require_tree ./plugins/select2
 //= require_tree .
 
-// $(function() {
-//   $('#vehicle_user_id').selectize({
-//     create: true,
-//     sortField: 'text'
-//   });
-// });
-
 
 // SELECT2
 $(document).ready(function() {

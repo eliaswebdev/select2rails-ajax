@@ -10,12 +10,11 @@
 puts "users"
 
 require 'ffaker'  
-1000.times do
+1000000.times do
   user = User.create!(
     name: FFaker::NameBR.name, 
     email: FFaker::Internet.email, 
     cpf: FFaker::IdentificationBR.pretty_cpf, 
   )
-
-  puts user
+  puts user.id
 end
