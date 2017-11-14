@@ -1,7 +1,9 @@
 <%- model_class = Vehicle -%>
 <div class="page-header">
+  <%= link_to t('.new', :default => t("helpers.links.new")), new_vehicle_path, :class => 'btn btn-primary pull-right' %>
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -16,7 +18,7 @@
     <% @vehicles.each do |vehicle| %>
       <tr>
         <td><%= link_to vehicle.id, vehicle_path(vehicle) %></td>
-        <td><%= vehicle.user_id %></td>
+        <td><%= vehicle.user.try(:name) %></td>
         <td><%= vehicle.description %></td>
         <td><%=l vehicle.created_at %></td>
         <td>
@@ -35,6 +37,3 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_vehicle_path,
-            :class => 'btn btn-primary' %>

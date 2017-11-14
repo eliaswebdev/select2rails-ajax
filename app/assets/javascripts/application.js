@@ -38,11 +38,15 @@ $(document).ready(function() {
     tags: true,
     tokenSeparators: [',']
   });
+ 
+});
 
-  $('.select2ajax').select2({
+
+$(function() {
+  return $('.select2ajax').select2({
     theme: 'bootstrap',
     language: "pt-BR",
-    minimumInputLength: 1,
+    minimumInputLength: 3,
     maximumInputLength: 20,
     ajax: {
       // url: $('.select2-field').data('endpoint'),
@@ -67,47 +71,4 @@ $(document).ready(function() {
       }
     }
   });  
-
-  // $('.select2ajax').select2({
-  //   minimumInputLength: 1,
-  //   maximumInputLength: 20,      
-  //   theme: "bootstrap",    
-  //   ajax: {
-  //     url: '/users/search.json',
-  //     dataType: 'json',
-  //     delay: 250
-  //     // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-  //   }
-  // });  
 });
-
-
-// $(function() {
-//   return $('.select2ajax').select2({
-//     theme: 'bootstrap',
-//     minimumInputLength: 1,
-//     maximumInputLength: 20,
-//     ajax: {
-//       // url: $('.select2-field').data('endpoint'),
-//       url: '/users/search.json',
-//       dataType: 'json',
-//       delay: 250,
-//       data: function(params) {
-//         return {
-//           q: params.term,
-//           page: params.page
-//         };
-//       },
-//       processResults: function(data) {
-//         return {
-//           results: $.map(data, function(item) {
-//             return {
-//               text: item.full_name,
-//               id: item.id
-//             };
-//           })
-//         };
-//       }
-//     }
-//   });
-// });
