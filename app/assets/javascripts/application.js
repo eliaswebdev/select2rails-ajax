@@ -13,7 +13,6 @@
 //= require rails-ujs
 //= require jquery
 //= require turbolinks
-//= require selectize-ajax
 //= require_tree ./plugins/select2
 //= require_tree .
 

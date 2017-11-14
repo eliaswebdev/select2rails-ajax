@@ -1,7 +1,9 @@
 <%- model_class = User -%>
 <div class="page-header">
+  <%= link_to t('.new', :default => t("helpers.links.new")), new_user_path, :class => 'btn btn-primary pull-right' %>
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -37,6 +39,8 @@
   </tbody>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_user_path,
-            :class => 'btn btn-primary' %>
+  
+<div class="text-center">
+  <%= paginate @users %>
+  <%= page_entries_info @users %>
+</div>

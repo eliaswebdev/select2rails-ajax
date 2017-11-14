@@ -4,15 +4,15 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def search
     @users = User.all
-                 .where('name LIKE ?', "%#{params[:q]}%")
+                 .where('name ILIKE ? OR email ILIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
 
     respond_to do |format|
-      format.json { render json: @users.map { |p| { id: p.id, name: p.name } } }
+      format.json { render json: @users.map { |p| { id: p.id, name: "#{p.name} - #{p.email}" } } }
     end
   end
 
